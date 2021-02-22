@@ -1,5 +1,5 @@
 ---
-title: redis数据类型
+title: redis数据类型简单使用
 date: '2021-02-22'
 type: 技术
 tags: redis数据类型
