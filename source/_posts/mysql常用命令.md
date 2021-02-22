@@ -2,7 +2,7 @@
 title: mysql常用命令
 date: '2021-02-21'
 type: 技术
-tags: mysql常用命令
+tags: [mysql, mysql常用命令]
 categories: mysql
 note: mysql索引类型和索引命中
 ---
@@ -250,7 +250,7 @@ end;
 调用
 
 ```
-select get_user('墨云');
+select get_user('darkoud');
 ```
 
 

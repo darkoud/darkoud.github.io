@@ -2,7 +2,7 @@
 title: mysql索引
 date: '2020-09-12'
 type: 技术
-tags: mysql索引
+tags: [mysql, mysql索引]
 categories: mysql
 note: mysql索引类型和索引命中
 ---
