@@ -10,7 +10,7 @@ note: redis数据类型
 
 ## redis的五大数据类型
 
-![](/images/2021022/redis_date_type/基本数据类型.png)
+![](/images/20210222/redis_date_type/redis基本数据类型.png)
 
 ## String结构
 
@@ -104,21 +104,21 @@ HMSET  user  1:name  zhuge 1:balance  1888
 HMGET  user  1:name  1:balance  
 ```
 
-![img](/images/2021022/redis_date_type/存储对象.png)
+![img](/images/20210222/redis_date_type/对象存储.png)
 
 ### hash应用场景
 
 比如以京东用户id为key, 商品id为filed, 商品数量为value, 对购物车操作
 
-* 添加商品 $\rightarrow$ hset cart:10001 10088 1
+* 添加商品 -> hset cart:10001 10088 1
 
-* 增加数量 $\rightarrow$ hincrby cart:10001 10088 1
+* 增加数量 -> hincrby cart:10001 10088 1
 
-* 商品总数 $\rightarrow$ hlen cart:10001
+* 商品总数 -> hlen cart:10001
 
-* 删除商品 $\rightarrow$ hdel cart:10001 10088
+* 删除商品 -> hdel cart:10001 10088
 
-* 获取购物车所有商品 $\rightarrow$ hgetall cart:10001
+* 获取购物车所有商品 -> hgetall cart:10001
 
 ### Hash结构优缺点
 
@@ -136,7 +136,7 @@ HMGET  user  1:name  1:balance
 
 **Redis集群架构下不适合大规模使用**
 
-![img](/images/2021022/redis_date_type/Redis集群架构.png)
+![img](/images/20210222/redis_date_type/Redis集群架构.png)
 
 
 
@@ -154,7 +154,7 @@ BLPOP  key  [key ...]  timeout  //从key列表表头弹出一个元素,若列表
 BRPOP  key  [key ...]  timeout  //从key列表表尾弹出一个元素,若列表中没有元素，阻塞等待timeout秒,如果timeout=0,一直阻塞等待
 ```
 
-![img](/images/2021022/redis_date_type/list常用操作.png)
+![img](/images/20210222/redis_date_type/list常用操作.png)
 
 ### 常用数据结构
 
@@ -170,11 +170,11 @@ BRPOP  key  [key ...]  timeout  //从key列表表尾弹出一个元素,若列表
 
 * 比如订阅公众号
 
-  >查看推送的公众号文章,  消息id为101  $\rightarrow$  LPUSH msg:{我的微信-ID} 101
+  >查看推送的公众号文章,  消息id为101 -> LPUSH msg:{我的微信-ID} 101
   >
-  >查看最新推送的公众号文章,  消息id为102  $\rightarrow$  LPUSH msg:{我的微信-ID} 102
+  >查看最新推送的公众号文章,  消息id为102 -> LPUSH msg:{我的微信-ID} 102
   >
-  >查看最新的几条消息  $\rightarrow$  LRANGE msg:{我的微信-ID} 0 4
+  >查看最新的几条消息 -> LRANGE msg:{我的微信-ID} 0 4
 
 
 
@@ -227,7 +227,7 @@ SDIFFSTORE  destination  key  [key ...]	//将差集结果存入新集合destinat
 
 ### 集合操作
 
-![img](/images/2021022/redis_date_type/集合操作.png)
+![img](/images/20210222/redis_date_type/集合操作.png)
 
 ```shell
 SINTER set1 set2 set3 -> { c }            // 求交集
@@ -260,7 +260,7 @@ ZUNIONSTORE destkey numkeys key [key ...]  //并集计算
 ZINTERSTORE destkey numkeys key [key …] //交集计算
 ```
 
-![img](/images/2021022/redis_date_type/zset集合.png)
+![img](/images/20210222/redis_date_type/zset集合.png)
 
 * Zset集合操作实现排行榜
 
@@ -295,7 +295,7 @@ Redis 在 3.2 推出 Geo 类型, 该功能可以推算出地理位置信息, 两
 * 经度范围是东经180到西经180, 纬度范围是南纬90到北纬90, 我们设定西经为负, 南纬为负, 所以地球上的经度范围就是[-180, 180]，纬度范围就是[-90, 90]. 如果以本初子午线, 赤道为界, 地球可以分成4个部分.
 * 如果纬度范围[-90°, 0°)用二进制0代表, (0°, 90°]用二进制1代表, 经度范围[-180°, 0°)用二进制0代表, (0°, 180°]用二进制1代表，那么地球可以分成如下(左图 )4个部分
 
-![](/images/2021022/redis_date_type/GeoHash.png)
+![](/images/20210222/redis_date_type/GeoHash.png)
 
 比如添加数据
 
