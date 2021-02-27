@@ -63,17 +63,9 @@ MyISAM索引文件和数据文件是分离的(非聚集), 叶子节点储存数�
 - 聚集索引-叶节点包含了完整的数据记录
 - 非主键索引的索引叶子节点只存储主键数据
 
-<center class = "half"> <img src = "D:\Tools\md\images\mysql_index/InnoDB.png" width = "50%" align = left><img src = "D:\Tools\md\images\mysql_index/InnoDB2.png"  width = "50%" align = right> </center>
+![MyISAM](/images/mysql_index/InnoDB.png)
 
-
-
-
-
-
-
-
-
-
+![MyISAM](/images/mysql_index/InnoDB2.png)
 
 所以建议InnoDB表必须建主键, 并且推荐使用整型的自增主键这样到方便范围查询
 
