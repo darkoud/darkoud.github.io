@@ -126,14 +126,14 @@ indexbtn:
   enable: true
   name: Github
   icon: fab fa-github-alt
-  url: https://gitee.com/darkoud
+  url: https://github.com/darkoud
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  gitee: https://gitee.com/darkoud
-#  github:  https://github.com/darkoud
+#  gitee: https://gitee.com/darkoud
+  github:  https://github.com/darkoud
   email: 282481215@qq.com
   facebook: # https://www.facebook.com/xxx
   twitter: # https://twitter.com/xxx
@@ -212,13 +212,13 @@ profile:
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的项目"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myProjects:
-  enable: true
+  enable: false
   data:
-    yvan-ui:
-      icon: fas fa-file-alt
-      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: https://gitee.com/sklef/yvan-ui
-      desc: TypeScript 风格的前端项目
+#    yvan-ui:
+#      icon: fas fa-file-alt
+#      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
+#      url: https://gitee.com/sklef/yvan-ui
+#      desc: TypeScript 风格的前端项目
 #    Fenix:
 #        icon: fas fa-database
 #        iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
@@ -381,7 +381,7 @@ changyan:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: false
-  url: https://gitee.com/darkoud
+  url: https://github.com/darkoud
   title: Fork Me
 
 # The password verification feature of read post. To use this feature,

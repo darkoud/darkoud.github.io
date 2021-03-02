@@ -122,7 +122,7 @@ sql语句: select no,name,birthday from table
 
 ## sql执行计划(exlpan)
 
-当我们需要优化sql的时候可以使用**explain**, 使用当时是 exlpan + sql.
+当我们需要优化sql的时候可以使用**explain**, 使用是 exlpan + sql.
 
 参考官方文档: [https://dev.mysql.com/doc/refman/5.7/en/explain-output.html ](https://dev.mysql.com/doc/refman/5.7/en/explain-output.html)
 
