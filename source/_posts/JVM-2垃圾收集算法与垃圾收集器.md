@@ -345,7 +345,7 @@ GC周期2：使用mark1, 则期待的mark标记10，所有引用都能被重新�
 
 那么，JVM是如何判断对象被移动过呢？就是利用上面提到的颜色指针，如果指针是Bad Color，那么程序还不能往下执行，需要「slow path」，修正指针；如果指针是Good Color，那么正常往下执行即可：
 
-​    ![0](https://note.youdao.com/yws/public/resource/74c84c1ab69727580cdb2646d35674fc/xmlnote/1E7DF6F4FA1943CC9A716E1189DD996A/96084)
+![](/images/jvm/2021-03-03_01-11-29.png)
 
 ❝ 这个动作是不是非常像JDK并发中用到的CAS自旋？读取的值发现已经失效了，需要重新读取。而ZGC这里是之前持有的指针由于GC后失效了，需要通过读屏障修正指针。❞
 
@@ -353,7 +353,7 @@ GC周期2：使用mark1, 则期待的mark标记10，所有引用都能被重新�
 
 正是因为Load Barriers的存在，所以会导致配置ZGC的应用的吞吐量会变低。官方的测试数据是需要多出额外4%的开销：
 
-​    ![0](https://note.youdao.com/yws/public/resource/74c84c1ab69727580cdb2646d35674fc/xmlnote/703C6230B76B4490AA542947BB308765/96085)
+![](/images/jvm/2021-03-03_01-11-38.png)
 
 那么，判断对象是Bad Color还是Good Color的依据是什么呢？就是根据上一段提到的Colored Pointers的4个颜色位。当加上读屏障时，根据对象指针中这4位的信息，就能知道当前对象是Bad/Good Color了。
 
@@ -363,7 +363,7 @@ GC周期2：使用mark1, 则期待的mark标记10，所有引用都能被重新�
 
 ZGC最大的问题是**浮动垃圾**。ZGC的停顿时间是在10ms以下，但是ZGC的执行时间还是远远大于这个时间的。假如ZGC全过程需要执行10分钟，在这个期间由于对象分配速率很高，将创建大量的新对象，这些对象很难进入当次GC，所以只能在下次GC的时候进行回收，这些只能等到下次GC才能回收的对象就是浮动垃圾。
 
-​                ZGC没有分代概念，每次都需要进行全堆扫描，导致一些“朝生夕死”的对象没能及时的被回收。
+> ZGC没有分代概念，每次都需要进行全堆扫描，导致一些“朝生夕死”的对象没能及时的被回收。
 
 **解决方案**
 
@@ -373,7 +373,7 @@ ZGC最大的问题是**浮动垃圾**。ZGC的停顿时间是在10ms以下，但
 
 启用ZGC比较简单，设置JVM参数即可：-XX:+UnlockExperimentalVMOptions 「-XX:+UseZGC」。调优也并不难，因为ZGC调优参数并不多，远不像CMS那么复杂。它和G1一样，可以调优的参数都比较少，大部分工作JVM能很好的自动完成。下图所示是ZGC可以调优的参数：
 
-![0](https://note.youdao.com/yws/public/resource/74c84c1ab69727580cdb2646d35674fc/xmlnote/56CB08E413744FB38B48A5C5B941AFE8/95940)
+![](/images/jvm/ZGC参数设置.png)
 
 **ZGC触发时机**
 
