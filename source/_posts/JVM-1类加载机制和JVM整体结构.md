@@ -551,7 +551,7 @@ PS C:\Users\3000> java -X
 -X 选项是非标准选项, 如有更改, 恕不另行通知。
 ```
 
-#### 不稳定参数(会对系统造成影响,谨慎使用)
+#### 不稳定参数(会对系统造成影响,谨慎使用,之后的版本可能放弃)
 
 ```shell
 java -XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial

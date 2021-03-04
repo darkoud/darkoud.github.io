@@ -26,7 +26,7 @@ categories: java
 
 ![](/images/jvm/标记-复制算法.jpeg)
 
-### 标记-清除算法
+### 标记-清除算法(老年代)
 
 算法分为“标记”和“清除”阶段：标记存活的对象， 统一回收所有未被标记的对象(一般选择这种)；也可以反过来，标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象 。它是最基础的收集算法，比较简单，但是会带来两个明显的问题：
 
@@ -77,7 +77,7 @@ Serial(串行)收集器是最基本、历史最悠久的垃圾收集器了。大
 
 **新生代采用复制算法，老年代采用标记-整理算法。**
 
-![](/images/jvm/Parallel Scavenge.jpeg)
+![](/images/jvm/Parallel_Scavenge.jpeg)
 
 **Parallel Old收集器是Parallel Scavenge收集器的老年代版本**。使用多线程和“标记-整理”算法。在注重吞吐量以及CPU资源的场合，都可以优先考虑 Parallel Scavenge收集器和Parallel Old收集器(**JDK8默认的新生代和老年代收集器**)。
 
@@ -85,7 +85,7 @@ Serial(串行)收集器是最基本、历史最悠久的垃圾收集器了。大
 
 **(-XX:+UseParNewGC)**
 
-ParNew收集器其实**跟Parallel收集器很类似**，区别主要在于它可以和CMS收集器配合使用。
+ParNew收集器其实**跟Parallel收集器很类似**，区别主要在于它可以和CMS收集器配合使用。paralel scavenge 可以设置最大gc停顿时间(-XX:MaxGCPauseMills)以及gc时间占比(-XX:GCTimeRatio)，可以设置吞吐量大小。
 
 **新生代采用复制算法，老年代采用标记-整理算法。**
 
